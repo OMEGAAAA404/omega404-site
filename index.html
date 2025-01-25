@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOLE OMEGA - SÉCURITÉ COMPROMISE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: #0f0;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
 
+        h1 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            animation: glitch 1.5s infinite alternate;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.8); }
+            50% { text-shadow: -2px -2px 5px rgba(0, 255, 0, 0.8); }
+            100% { text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.8); }
+        }
+
+        .console {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 2px solid #0f0;
+            text-align: left;
+            overflow-y: auto;
+            height: 300px;
+            font-size: 1rem;
+        }
+
+        input {
+            background: black;
+            border: none;
+            color: #0f0;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            width: 100%;
+            outline: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .scan-effect {
+            width: 200px;
+            height: 200px;
+            background: url('qr-code.png') no-repeat center;
+            background-size: cover;
+            border: 2px solid #0f0;
+            margin: 20px auto;
+            animation: scan 2s infinite linear;
+        }
+
+        @keyframes scan {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(2); }
+            100% { filter: brightness(1); }
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: rgba(0, 255, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>⚠️ ALERT - PROTOCOLE OMEGA COMPROMIS ⚠️</h1>
+    <p id="timer">Tentative de restauration en cours... 60s</p>
+
+    <div class="console" id="console">
+        <p>██████████ PROTOCOLE OMEGA ██████████</p>
+        <p>SYSTÈME COMPROMIS...</p>
+        <p>Commande requise : <strong>ACCESS_CODE</strong></p>
+    </div>
+
+    <input type="text" id="terminalInput" placeholder="> Entrez une commande..." autofocus>
+
+    <div id="qrSection" class="hidden">
+        <p>🔓 ACCÈS AUTORISÉ - Téléchargez le Code-Ex :</p>
+        <div class="scan-effect"></div>
+    </div>
+
+    <footer>
+        [SYSTEM LOG ERROR] -- Transmission fragmentée.  
+        <br>-- ██ ██ ██ ██ ██ ██ --  
+        <br>🔒 Accès restreint. Seuls les plus entraînés comprendront la clé.
+    </footer>
+
+    <!-- MESSAGE CACHÉ DANS LE CODE SOURCE -->
+    <!-- CODE SECRET : MASM -->
+
+    <script>
+        document.getElementById("terminalInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                processCommand();
+            }
+        });
+
+        function processCommand() {
+            let inputField = document.getElementById("terminalInput");
+            let command = inputField.value.trim().toUpperCase();
+            let consoleDiv = document.getElementById("console");
+
+            if (command === "ACCESS_CODE") {
+                consoleDiv.innerHTML += "<p>✅ ACCÈS ACCORDÉ - PROTOCOLE ACTIVÉ.</p>";
+                consoleDiv.innerHTML += "<p>📡 SCAN EN COURS...</p>";
+                setTimeout(() => {
+                    document.getElementById("qrSection").classList.remove("hidden");
+                }, 2000);
+            } else if (command === "LOGS") {
+                consoleDiv.innerHTML += "<p>🔎 CONSULTATION DES LOGS...</p>";
+                consoleDiv.innerHTML += "<p>📡 CODE EXFILTRÉ AVANT COUPURE.</p>";
+                consoleDiv.innerHTML += "<p>INDICE : VERIFIEZ LE CODE SOURCE.</p>";
+            } else if (command === "TRACE") {
+                consoleDiv.innerHTML += "<p>🛰️ ANALYSE DU SIGNAL...</p>";
+                consoleDiv.innerHTML += "<p>📍 LOCALISATION : ████ ██ ██ ██ ██ ██</p>";
+            } else {
+                consoleDiv.innerHTML += "<p>❌ COMMANDE INVALIDE.</p>";
+            }
+
+            inputField.value = "";
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        function startTimer() {
+            let timeLeft = 60;
+            let timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById("timer").textContent = `Tentative de restauration en cours... ${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById("timer").textContent = "💀 SYSTÈME INACCESSIBLE - PERTE DE DONNÉES";
+                }
+            }, 1000);
+        }
+
+        startTimer();
+    </script>
+
+</body>
+</html>
